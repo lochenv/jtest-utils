@@ -5,6 +5,18 @@
 
 	<artifactId>jtoolbox-testing</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 	<packaging>jar</packaging>
 
 	<name>testing</name>
@@ -24,5 +36,25 @@
 	</properties>
 
 	<dependencies>
+
+        <!-- Validation API -->
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+            <scope>provided</scope>
+		</dependency>
+
+        <!-- Testing, in this case JUnit is not registered as scope test but as provided -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 </project>

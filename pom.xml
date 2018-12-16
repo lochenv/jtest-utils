@@ -1,22 +1,94 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.vlproject</groupId>
-	<artifactId>jtoolbox</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<packaging>pom</packaging>
+    <groupId>com.vlproject</groupId>
+    <artifactId>jtoolbox</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
-	<name>J-Toolbox</name>
-	<description>A bunch of utility class for many purpose in Java</description>
+    <name>J-Toolbox</name>
+    <description>A bunch of utility class for many purpose in Java</description>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<java.version>1.8</java.version>
-	</properties>
+    <developers>
+        <developer>
+            <name>Lochen Vincent</name>
+            <email>lochenv@gmail.com</email>
+        </developer>
+    </developers>
 
-	<dependencies>
-	</dependencies>
+    <properties>
+        <!-- Project -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <project.code.compliancy.level>1.8</project.code.compliancy.level>
+
+        <!-- Build -->
+        <version.mojo.compiler>3.8.0</version.mojo.compiler>
+
+        <!-- Validation -->
+        <jsr303.version>1.0.0.GA</jsr303.version>
+
+        <!-- Testing -->
+        <junit.version>4.12</junit.version>
+        <hamcrest.version>1.3.0</hamcrest.version>
+        <hibernate-validator.version>6.0.13.Final</hibernate-validator.version>
+    </properties>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${version.mojo.compiler}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <!-- Maven Core plug-ins -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${project.code.compliancy.level}</source>
+                    <target>${project.code.compliancy.level}</target>
+                    <useIncrementalCompilation>false</useIncrementalCompilation>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <dependencyManagement>
+        <dependencies>
+
+            <!-- Bean Validation -->
+            <dependency>
+                <groupId>javax.validation</groupId>
+                <artifactId>validation-api</artifactId>
+                <version>${jsr303.version}</version>
+            </dependency>
+
+            <!-- Testing -->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.hamcrest</groupId>
+                <artifactId>hamcrest-all</artifactId>
+                <version>${hamcrest.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-validator</artifactId>
+                <version>${hibernate-validator.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    <dependencies>
+    </dependencies>
 </project>
